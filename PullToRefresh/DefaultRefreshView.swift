@@ -9,7 +9,7 @@
 import UIKit
 
 class DefaultRefreshView: UIView {
-    
+
     fileprivate(set) lazy var activityIndicator: UIActivityIndicatorView! = {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.addSubview(activityIndicator)
@@ -19,10 +19,10 @@ class DefaultRefreshView: UIView {
     override func layoutSubviews() {
         centerActivityIndicator()
         setupFrame(in: superview)
-        
+
         super.layoutSubviews()
     }
-    
+
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         centerActivityIndicator()
@@ -31,14 +31,14 @@ class DefaultRefreshView: UIView {
 }
 
 private extension DefaultRefreshView {
-    
+
     func setupFrame(in newSuperview: UIView?) {
         guard let superview = newSuperview else { return }
 
         frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: superview.frame.width, height: frame.height)
     }
-    
-     func centerActivityIndicator() {
+
+    func centerActivityIndicator() {
         activityIndicator.center = convert(center, from: superview)
     }
 }
